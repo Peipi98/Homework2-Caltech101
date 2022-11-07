@@ -17,9 +17,11 @@ def pil_loader(path):
 class Caltech(VisionDataset):
     def __init__(self, root, split='train', transform=None, target_transform=None):
         super(Caltech, self).__init__(root, transform=transform, target_transform=target_transform)
+        
 
         self.split = split # This defines the split you are going to use
-                           # (split files are called 'train.txt' and 'test.txt')       
+                           # (split files are called 'train.txt' and 'test.txt')
+
         path = "/content/Caltech101/" + self.split + ".txt"
 
         self.data = list()
@@ -39,14 +41,11 @@ class Caltech(VisionDataset):
         __getitem__ should access an element through its index
         Args:
             index (int): Index
-
         Returns:
             tuple: (sample, target) where target is class_index of the target class.
         '''
 
-        image, label =  self.data[index] # Provide a way to access image and label via index
-                           # Image should be a PIL Image
-                           # label can be int
+        image, label = self.data[index]
 
         # Applies preprocessing when accessing the image
         if self.transform is not None:
@@ -59,5 +58,4 @@ class Caltech(VisionDataset):
         The __len__ method returns the length of the dataset
         It is mandatory, as this is used by several other components
         '''
-        length = len(self.data) # Provide a way to get the length (number of elements) of the dataset
-        return length
+        return len(self.data)
