@@ -19,16 +19,7 @@ class Caltech(VisionDataset):
         super(Caltech, self).__init__(root, transform=transform, target_transform=target_transform)
 
         self.split = split # This defines the split you are going to use
-                           # (split files are called 'train.txt' and 'test.txt')
-        '''
-        - Here you should implement the logic for reading the splits files and accessing elements
-        - If the RAM size allows it, it is faster to store all data in memory
-        - PyTorch Dataset classes use indexes to read elements
-        - You should provide a way for the __getitem__ method to access the image-label pair
-          through the index
-        - Labels should start from 0, so for Caltech you will have lables 0...100 (excluding the background class) 
-        '''
-        
+                           # (split files are called 'train.txt' and 'test.txt')       
         path = "/content/Caltech101/" + self.split + ".txt"
 
         self.data = list()
